@@ -119,7 +119,7 @@ class BatchData(ProxyDataFlow):
                 yield BatchData._aggregate_batch(holder, self.use_list)
                 del holder[:]
         if self.remainder and len(holder) > 0:
-            yield BatchData._aggregate_batch(holder, self.use_list)
+            yield self._aggregate_batch(holder, self.use_list)
 
     @staticmethod
     def _aggregate_batch(data_holder, use_list=False):
