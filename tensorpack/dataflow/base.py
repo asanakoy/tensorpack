@@ -62,7 +62,8 @@ class DataFlow(object):
         """
         raise NotImplementedError()
 
-    __len__ = size
+    def __len__(self):
+        return self.size()
 
     def reset_state(self):
         """
