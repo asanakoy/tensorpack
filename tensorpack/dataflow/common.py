@@ -116,7 +116,7 @@ class BatchData(ProxyDataFlow):
         for data in self.ds.get_data():
             holder.append(data)
             if len(holder) == self.batch_size:
-                yield BatchData._aggregate_batch(holder, self.use_list)
+                yield self._aggregate_batch(holder, self.use_list)
                 del holder[:]
         if self.remainder and len(holder) > 0:
             yield self._aggregate_batch(holder, self.use_list)
@@ -191,7 +191,7 @@ class BatchDataByShape(BatchData):
                 holder = self.holder[shp]
                 holder.append(dp)
                 if len(holder) == self.batch_size:
-                    yield BatchData._aggregate_batch(holder)
+                    yield self._aggregate_batch(holder)
                     del holder[:]
 
 
